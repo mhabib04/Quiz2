@@ -20,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.tvCostDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent costDetail = new Intent(getApplicationContext(), CostActivity.class);
+                startActivity(costDetail);
+            }
+        });
+
         Cost cost = new Cost();
 
         binding.btnPesan.setOnClickListener(new View.OnClickListener() {

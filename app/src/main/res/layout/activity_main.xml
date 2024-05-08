@@ -125,11 +125,22 @@
                 android:text=""
                 android:hint="Waktu"
                 android:inputType="number"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvCostDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Klik ini untuk Detail Cost!"
+            android:textColor="#008DDA"
+            android:textSize="15sp"
+            android:textStyle="bold|italic"
+            android:layout_marginBottom="25dp"
+            />
 
         <Button
             android:id="@+id/btnPesan"
