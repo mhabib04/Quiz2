@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#BCA37F"
+    android:background="#89CFF3"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:gravity="center"
-        android:background="#B99470"
+        android:background="#00A9FF"
         android:padding="15dp"
         android:textColor="@color/black"/>
 
@@ -116,15 +116,20 @@
 
         </TableLayout>
 
-
-        <EditText
-            android:id="@+id/etWaktu"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Jam"
-            android:inputType="number"
-            android:paddingBottom="20dp"
-            />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etWaktu"
+                android:text=""
+                android:hint="Waktu"
+                android:inputType="number"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnPesan"

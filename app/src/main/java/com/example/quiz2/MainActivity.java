@@ -3,6 +3,7 @@ package com.example.quiz2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,43 +25,48 @@ public class MainActivity extends AppCompatActivity {
         binding.btnPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.PS5.isChecked()) {
-                    cost.setType("PS5");
-                    cost.setTarifType(10000);
-                } else if (binding.PS4.isChecked()) {
-                    cost.setType("PS4");
-                    cost.setTarifType(8000);
-                } else if (binding.PS3.isChecked()) {
-                    cost.setType("PS3");
-                    cost.setTarifType(5000);
-                } else if (binding.PSVR.isChecked()) {
-                    cost.setType("PSVR");
-                    cost.setTarifType(20000);
+                try {
+                    if (binding.PS5.isChecked()) {
+                        cost.setType("PS5");
+                        cost.setTarifType(10000);
+                    } else if (binding.PS4.isChecked()) {
+                        cost.setType("PS4");
+                        cost.setTarifType(8000);
+                    } else if (binding.PS3.isChecked()) {
+                        cost.setType("PS3");
+                        cost.setTarifType(5000);
+                    } else if (binding.PSVR.isChecked()) {
+                        cost.setType("PSVR");
+                        cost.setTarifType(20000);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Pilih type terlebih dahulu!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (binding.indomie.isChecked()) {
+                        cost.setTambahan("Indomie");
+                        cost.setTarifTambahan(7000);
+                    } else if (binding.mieAyam.isChecked()) {
+                        cost.setTambahan("Mie Ayam");
+                        cost.setTarifTambahan(10000);
+                    } else if (binding.siomay.isChecked()) {
+                        cost.setTambahan("Siomay");
+                        cost.setTarifTambahan(5000);
+                    }
+
+                    String waktu = binding.etWaktu.getText().toString();
+                    int waktuMain = Integer.parseInt(waktu);
+                    if (waktu.isEmpty()) {
+                        binding.etWaktu.setError("Isi Terlebih Dahulu!");
+                    } else {
+                        cost.setWaktu(waktuMain);
+                    }
+
+                    Intent intent = new Intent(MainActivity.this, InvoiceActivity.class);
+                    intent.putExtra(InvoiceActivity.KEY_DATA, cost);
+                    startActivity(intent);
+                } catch (NumberFormatException e) {
+                    binding.etWaktu.setError("Waktu harus berupa angka!");
                 }
-
-                if (binding.indomie.isChecked()){
-                    cost.setTambahan("Indomie");
-                    cost.setTarifTambahan(7000);
-                } else if (binding.mieAyam.isChecked()) {
-                    cost.setTambahan("Mie Ayam");
-                    cost.setTarifTambahan(10000);
-                } else if (binding.siomay.isChecked()) {
-                    cost.setTambahan("Siomay");
-                    cost.setTarifTambahan(5000);
-                }
-
-                String waktu = binding.etWaktu.getText().toString();
-                int waktuMain = Integer.parseInt(waktu);
-                if (waktu.isEmpty()){
-                    binding.etWaktu.setError("Isi Terlebih Dahulu!");
-                } else {
-                    cost.setWaktu(waktuMain);
-                }
-
-
-                Intent intent = new Intent(MainActivity.this, InvoiceActivity.class);
-                intent.putExtra(InvoiceActivity.KEY_DATA, cost);
-                startActivity(intent);
             }
         });
     }

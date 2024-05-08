@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#BCA37F"
+    android:background="#89CFF3"
     tools:context=".InvoiceActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:gravity="center"
-        android:background="#B99470"
+        android:background="#00A9FF"
         android:padding="15dp"
         android:textColor="@color/black"/>
 
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="30dp"
         app:cardElevation="15dp"
-        app:cardBackgroundColor="#FFC374"
+        app:cardBackgroundColor="#00A9FF"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -42,6 +42,7 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 />
+
             <TextView
                 android:id="@+id/txtTambahan"
                 android:layout_width="match_parent"
@@ -52,6 +53,7 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 />
+
             <TextView
                 android:id="@+id/txtWaktu"
                 android:layout_width="match_parent"
@@ -62,6 +64,7 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 />
+
             <TextView
                 android:id="@+id/txtTotal"
                 android:layout_width="match_parent"

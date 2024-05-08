@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quiz2.databinding.ActivityInvoiceBinding;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class InvoiceActivity extends AppCompatActivity {
 
     private ActivityInvoiceBinding binding;
@@ -28,6 +31,9 @@ public class InvoiceActivity extends AppCompatActivity {
             cost = getIntent().getParcelableExtra(KEY_DATA);
         }
 
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
         String type = cost.getType();
         String tambahan = cost.getTambahan();
         int waktu = cost.getWaktu();
@@ -35,10 +41,12 @@ public class InvoiceActivity extends AppCompatActivity {
         int tarifTambahan = cost.getTarifTambahan();
         int total = (tarifType * waktu) + tarifTambahan;
 
-        binding.txtType.setText("Type : " + type + " (Rp" + tarifType + ")");
-        binding.txtTambahan.setText(tambahan + " : Rp" + tarifTambahan);
+
+
+        binding.txtType.setText("Type : " + type + " (" + formatRupiah.format((double)tarifType) + ")");
+        binding.txtTambahan.setText(tambahan + " : " + formatRupiah.format((double)tarifTambahan));
         binding.txtWaktu.setText("Waktu : " + waktu + " jam");
-        binding.txtTotal.setText("Total : Rp" + total);
+        binding.txtTotal.setText("Total : " + formatRupiah.format((double)total));
 
     }
 }
